@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/home/about' => 'homes#about', as: 'about'
   post '/users/:id' => 'users#create'
+  get '/search', to: 'searches#search'
+  
   resources :users, only: [:index, :create, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
